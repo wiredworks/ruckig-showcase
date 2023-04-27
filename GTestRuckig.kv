@@ -1,0 +1,313 @@
+#:kivy 2.1.0
+
+<Screens@Screenmanager>:
+    Main:
+        id:sc_Main
+        name:'MainScreen'
+        manager:'Screens'
+<Ww_Graph@Graph>:
+    #id:ww_graph
+<Input@Widget>:
+    BoxLayout:
+        orientation:'vertical'
+        size: root.size
+        pos: root.pos
+        Label:
+            textsize:(10,10)
+            maxlines:1
+            size_hint: 1,1
+            text:'Current State'        
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Position'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_In_Position
+                text:'0'
+                on_text_validate: root.on_enter()
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Vel'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_In_Vel
+                text:'0'
+                on_text_validate: root.on_enter()
+        BoxLayout:
+            orientation:'horizontal' 
+            Label:
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Acc'       
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_In_Acc
+                text:'0'
+                on_text_validate: root.on_enter()
+<Output@Widget>:
+    BoxLayout:
+        orientation:'vertical'
+        size: root.size
+        pos: root.pos
+        Label:
+            textsize:(10,10)
+            maxlines:1
+            size_hint: 1,1
+            text:'Target State'        
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Position'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_Out_Position
+                text:'36'
+                on_text_validate: root.on_enter()
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Vel'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_Out_Vel
+                text:'0'
+                on_text_validate: root.on_enter()
+        BoxLayout:
+            orientation:'horizontal' 
+            Label:
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Acc'       
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_Out_Acc
+                text:'0'
+                on_text_validate: root.on_enter()  
+<Limits@Widget>:
+    BoxLayout:
+        orientation:'horizontal'
+        size: root.size
+        pos: root.pos
+        Label:
+            size_hint: .5,1
+            text:''
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Max Vel'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_maxVel
+                text:'6'
+                on_text_validate: root.on_enter()
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Max Acc'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_maxAcc
+                text:'2'
+                on_text_validate: root.on_enter() 
+        BoxLayout:
+            orientation:'horizontal'
+            Label:
+                textsize:(10,10)
+                maxlines:1
+                halign:'left'
+                size_hint: .5,1
+                text:'Max Jerk'
+            TextInput:
+                multiline:0
+                halign:'right'
+                size_hint: .5,1
+                font_size:12
+                id:txt_maxJerk
+                text:'1'
+                on_text_validate: root.on_enter() 
+        Label:
+            size_hint: .5,1
+            text:''
+<Results@Widget>:
+    BoxLayout:
+        orientation:'vertical'
+        size: root.size
+        pos: root.pos
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1,0.5
+            Label:
+                size_hint: 0.25,0.5            
+                text:''
+            BoxLayout:
+                orientation:'horizontal'
+                size_hint: 0.5,1                            
+                BoxLayout:
+                    orientation:'horizontal'
+                    size_hint: 0.3,1
+                    Label:
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'Delta Pos'
+                    Label:
+                        id:lbl_DeltaPos
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'12.345'
+                BoxLayout:
+                    orientation:'horizontal'
+                    size_hint: 0.3,1
+                    Label:
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'Delta Vel'
+                    Label:
+                        id:lbl_DeltaVel
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'12.345'
+                BoxLayout:
+                    orientation:'horizontal'
+                    size_hint: 0.3,1
+                    Label:
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'Delta Acc'
+                    Label:
+                        id:lbl_DeltaAcc
+                        textsize:(10,10)
+                        maxlines:1
+                        halign:'left'
+                        size_hint: .5,1
+                        text:'12.345' 
+            Label:
+                size_hint: .25,1            
+                text:'' 
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1,0.5
+            Label:
+                size_hint: .1,1            
+                text:'' 
+            BoxLayout:
+                orientation:'horizontal'
+                size_hint: .15,1
+                Label:
+                    textsize:(10,10)
+                    maxlines:1
+                    halign:'left'
+                    size_hint: .5,1
+                    text:'Duration'
+                Label:
+                    id:lbl_Duration
+                    textsize:(10,10)
+                    maxlines:1
+                    halign:'left'
+                    size_hint: .5,1
+                    text:'12.345' 
+            BoxLayout:
+                orientation:'horizontal'
+                size_hint: .15,1
+                Label:
+                    textsize:(10,10)
+                    maxlines:1
+                    halign:'left'
+                    size_hint: .5,1
+                    text:'CPU-Time'
+                Label:
+                    id:lbl_CPUTime
+                    textsize:(10,10)
+                    maxlines:1
+                    halign:'left'
+                    size_hint: .5,1
+                    text:'12.345'                                                                                                                                                                                                                                                
+            Label:
+                size_hint: .1,1            
+                text:'' 
+<Main@Screen>:
+    name: 'main'
+    FloatLayout:
+        Input:
+            id:wd_Input
+            size_hint:0.2,0.2
+            pos_hint:{'x':0.,'y':0.7}
+        Output:
+            id:wd_Output
+            size_hint:0.2,0.2
+            pos_hint:{'x':0.78,'y':0.7} 
+        Results:
+            id:wd_Results
+            size_hint:1,0.1
+            pos_hint:{'x':0.,'y':0.} 
+        Limits:
+            id:wd_Limits
+            size_hint:1,0.05
+            pos_hint:{'x':0.,'y':0.92}                                                                                                         
+        Ww_Graph:
+            id:gr_Graph
+            size_hint: 0.58,0.8
+            pos_hint:{'x':0.22,'y':0.1}
+        
+            
